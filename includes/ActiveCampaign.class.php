@@ -8,8 +8,10 @@ require_once("Connector.class.php");
 
 class ActiveCampaign extends AC_Connector {
 
+	public $path;
 	public $url_base;
 	public $url;
+	public $url_proxy;
 	public $api_key;
 	public $track_email;
 	public $track_actid;
@@ -32,6 +34,7 @@ class ActiveCampaign extends AC_Connector {
 	}
 
 	function api($path, $post_data = array()) {
+		$this->path = $path;
 		// IE: "contact/view"
 		$components = explode("/", $path);
 		$component = $components[0];
@@ -101,6 +104,8 @@ class ActiveCampaign extends AC_Connector {
 			$method = "list_";
 		}
 
+		$class->url_proxy = $this->url_proxy;
+		$class->path = $this->path;
 		$class->debug = $this->debug;
 
 		$response = $class->$method($params, $post_data);

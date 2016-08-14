@@ -3,6 +3,7 @@
 class AC_Connector {
 
 	public $url;
+	public $url_proxy;
 	public $api_key;
 	public $output = "json";
 
@@ -17,12 +18,17 @@ class AC_Connector {
 			// remove trailing slash
 			$url = substr($url, 0, strlen($url) - 1);
 		}
+		if (strpos($url, ".api-us1.com") !== false) {
+			list($acct, $host, $tld) = explode(".", substr($url, 8));
+		}
 		if ($api_key) {
 			$this->url = "{$url}{$base}/api.php?api_key={$api_key}";
 		}
 		elseif ($api_user && $api_pass) {
 			$this->url = "{$url}{$base}/api.php?api_user={$api_user}&api_pass={$api_pass}";
 		}
+		// Replace PROXY-SITE below with your domain.
+		$this->url_proxy = "http://PROXY-SITE.com/ac-api-proxy/index.php?acct={$acct}&api_key={$api_key}";
 		$this->api_key = $api_key;
 	}
 
@@ -69,6 +75,7 @@ class AC_Connector {
 			$method = $custom_method;
 			$url .= "?api_key=" . $this->api_key;
 		}
+		$url = $this->url_proxy . "&path=" . urlencode($this->path);
 		$debug_str1 = "";
 		$request = curl_init();
 		$debug_str1 .= "\$ch = curl_init();\n";

@@ -1,15 +1,15 @@
 { 
-	"name": "test/test",
+	"name": "mattthommes/activecampaign-api-php-personal",
 	"description": "Testing using the ActiveCampaign PHP API wrapper with Composer.",
 	"authors": [{
 			"name": "Matt Thommes",
-			"email": "matt@activecampaign.com",
-			"homepage": "http://www.activecampaign.com",
+			"email": "matt@thomm.es",
+			"homepage": "http://matt.thomm.es",
 			"role": "Developer"
 		}
 	],
 	"require": {
-		"activecampaign/api-php": "1.0.0"
+		"activecampaign/api-php": "v1.1.0"
 	},
 	"minimum-stability": "dev"
 }
