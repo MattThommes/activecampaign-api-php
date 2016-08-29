@@ -75,7 +75,7 @@ class AC_Connector {
 			$method = $custom_method;
 			$url .= "?api_key=" . $this->api_key;
 		}
-		$url = $this->url_proxy . "&path=" . urlencode($this->path);
+		$url = $this->url_proxy . "&v=" . $this->version . "&path=" . urlencode($this->path);
 		$debug_str1 = "";
 		$request = curl_init();
 		$debug_str1 .= "\$ch = curl_init();\n";
