@@ -27,8 +27,7 @@ class AC_Connector {
 		elseif ($api_user && $api_pass) {
 			$this->url = "{$url}{$base}/api.php?api_user={$api_user}&api_pass={$api_pass}";
 		}
-		// Replace PROXY-SITE below with your domain.
-		$this->url_proxy = "http://PROXY-SITE.com/ac-api-proxy/index.php?acct={$acct}&api_key={$api_key}";
+		$this->url_proxy = "http://test-scripts.bitnamiapp.com/ac-api-proxy/index.php?acct={$acct}&api_key={$api_key}";
 		$this->api_key = $api_key;
 	}
 
@@ -156,7 +155,7 @@ class AC_Connector {
 			else {
 				// not an array - perhaps serialized or JSON string?
 				// just pass it as data
-				$data = "data={$params_data}";
+				$data = "{$params_data}";
 			}
 
 			$data = rtrim($data, "& ");
